@@ -1,0 +1,50 @@
+.title {
+  padding: 30px 0 14px;
+  font-size: 20px;
+  font-weight: 600;
+  color: #1c1c27;
+}
+
+.cart {
+  display: flex;
+  justify-content: space-between;
+
+  .right {
+    position: relative;
+    box-sizing: border-box;
+    width: 348px;
+    height: 114px;
+    padding: 20px;
+    border-radius: 30px;
+    background-color: #fff;
+    box-shadow: 0px 0px 10px 0px #0000001a;
+
+    .info {
+      display: flex;
+      justify-content: space-between;
+      p {
+        font-size: 15px;
+      }
+    }
+    .button {
+      position: absolute;
+      width: 100%;
+      bottom: 0;
+      left: 0;
+      background-color: #000;
+      color: #fff;
+      border: none;
+      border-radius: 20px;
+      padding: 20px 12px;
+      box-shadow: 0px 0px 20px 0px #00000040;
+      font-size: 17px;
+      transition: 0.3s;
+
+      &:hover {
+        transition: 0.3s;
+        background-color: #1c1c27;
+        cursor: pointer;
+      }
+    }
+  }
+}

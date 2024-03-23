@@ -1,0 +1,28 @@
+.header {
+  height: 60px;
+
+  .header_wrapper {
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .logo {
+      font-size: 25px;
+      font-weight: 700;
+      color: #101010;
+    }
+    nav {
+      ul {
+        display: flex;
+        gap: 45px;
+        li {
+          img {
+            width: 22px;
+            height: 22px;
+          }
+        }
+      }
+    }
+  }
+}
