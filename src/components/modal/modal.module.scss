@@ -1,0 +1,76 @@
+.modal {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba($color: #000000, $alpha: 0.2);
+  backdrop-filter: blur(3px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+}
+
+.content {
+  position: relative;
+  width: 450px;
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.1);
+  background-color: #faf7f6;
+  overflow-y: auto;
+  overflow-x: hidden;
+  transform: scale(0);
+  transition: 0.2s all;
+  @media (max-width: 768px) {
+    width: 360px;
+  }
+  .close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    height: 30px;
+    width: 30px;
+    padding: 0;
+    background-color: transparent;
+    border: none;
+    svg {
+      cursor: pointer;
+      height: 30px;
+      width: 30px;
+      transition: 0.3s;
+
+      &:hover {
+        transition: 0.3s;
+        fill: #ffa542;
+      }
+    }
+  }
+}
+
+.content_active {
+  transform: scale(1);
+  cursor: default;
+}
+
+////////////////////////////////////////
+/* Стили для обертки модального окна */
+.modal-enter {
+  pointer-events: none;
+  opacity: 0;
+}
+.modal-enter-active {
+  opacity: 1;
+  pointer-events: all;
+  transition: 400ms;
+}
+
+.modal-exit {
+  opacity: 1;
+}
+.modal-exit-active {
+  opacity: 0;
+  transition: opacity 400ms;
+  pointer-events: none;
+}

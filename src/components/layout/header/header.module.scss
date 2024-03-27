@@ -22,6 +22,40 @@
             height: 22px;
           }
         }
+        .favorite {
+          cursor: pointer;
+        }
+        .cart {
+          position: relative;
+          .count_wrapper {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            .count_circle {
+              position: relative;
+              box-sizing: border-box;
+              font-size: 15px;
+              font-weight: 500;
+              background-color: #ffa542;
+              height: 20px;
+              width: 20px;
+              padding: 2px 6px;
+              border-radius: 50%;
+              .count {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                font-size: 14px;
+                font-weight: 500;
+                color: #fff;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+              }
+            }
+          }
+        }
       }
     }
   }

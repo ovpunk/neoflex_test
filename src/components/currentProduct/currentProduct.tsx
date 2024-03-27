@@ -1,41 +1,47 @@
-import { FC, useContext, useEffect, useState } from "react";
+import { FC, useState, MouseEvent } from "react";
 import styles from "./currentproduct.module.scss";
 import star from "../../assets/icons/star.svg";
-import { CartContext, IHeadphonesWithCount } from "../layout/layout";
+import { IHeadphones } from "../../products";
+import { useAppDispatch } from "../../hooks/hooks";
+import { addProduct } from "../../redux/slices/cartSlice";
+import { Modal } from "../modal/modal";
+import { ModalProduct } from "../modalProduct/modalProduct";
 
-interface ICurrentProduct {
-  product: IHeadphonesWithCount;
+export interface ICurrentProduct {
+  product: IHeadphones;
 }
 
 export const CurrentProduct: FC<ICurrentProduct> = ({ product }) => {
-  const cartItemsString = sessionStorage.getItem("cartItems");
-  const cartItems: IHeadphonesWithCount[] =
-    cartItemsString && JSON.parse(cartItemsString);
+  const [active, setActive] = useState(false);
+  const [openContent, setOpenContent] = useState(false);
 
-  const { cart, setCart } = useContext(CartContext);
+  const dispatch = useAppDispatch();
 
-  // возможно нужно сделат count через состоянине, посмотреть в других проектах
-  const [count, setCount] = useState(0);
+  const handleAddToCart = (e: MouseEvent<HTMLButtonElement>) => {
+    e.stopPropagation();
 
-  const handleAddToCart = () => {
-    const existingItem = cartItems.find((item) => item.id === product.id);
-    if (existingItem) {
-      const updatedCart = cartItems.map((item) =>
-        item.id === product.id ? { ...item, count: item.count + 1 } : item
-      );
-      setCart(updatedCart);
-    } else {
-      const newCart = [...cartItems, { ...product, count: 1 }];
-      setCart(newCart);
-    }
+    dispatch(addProduct(product));
   };
 
-  useEffect(() => {
-    sessionStorage.setItem("cartItems", JSON.stringify(cart));
-  }, [cart]);
+  const handleOpenModal = () => {
+    document.body.classList.add("bodyModalOpen");
+    setTimeout(() => {
+      setOpenContent(true);
+    }, 100);
+    setActive(true);
+  };
+
+  const handleCloseModal = (
+    e: MouseEvent<HTMLDivElement | HTMLButtonElement>
+  ) => {
+    e.stopPropagation();
+    setActive(false);
+    setOpenContent(false);
+    document.body.classList.remove("bodyModalOpen");
+  };
 
   return (
-    <div className={styles.product}>
+    <div className={styles.product} onClick={() => handleOpenModal()}>
       <div className={styles.img_wrapper}>
         <img
           src={product.img}
@@ -53,9 +59,16 @@ export const CurrentProduct: FC<ICurrentProduct> = ({ product }) => {
             <img src={star} alt="Рейтинг" />
             <span>{product.rate}</span>
           </div>
-          <button onClick={() => handleAddToCart()}>Купить</button>
+          <button onClick={(e) => handleAddToCart(e)}>Купить</button>
         </div>
       </div>
+      <Modal
+        active={active}
+        openContent={openContent}
+        handleCloseModal={handleCloseModal}
+      >
+        <ModalProduct product={product} />
+      </Modal>
     </div>
   );
 };

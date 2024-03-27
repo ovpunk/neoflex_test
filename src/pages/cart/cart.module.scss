@@ -8,6 +8,18 @@
 .cart {
   display: flex;
   justify-content: space-between;
+  gap: 40px;
+  @media (max-width: 756px) {
+    flex-direction: column;
+  }
+
+  .left {
+    width: 633px;
+
+    @media (max-width: 756px) {
+      width: 100%;
+    }
+  }
 
   .right {
     position: relative;
@@ -18,7 +30,9 @@
     border-radius: 30px;
     background-color: #fff;
     box-shadow: 0px 0px 10px 0px #0000001a;
-
+    @media (max-width: 756px) {
+      width: 100%;
+    }
     .info {
       display: flex;
       justify-content: space-between;

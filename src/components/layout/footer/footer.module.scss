@@ -16,6 +16,9 @@
     font-weight: 700;
     color: #101010;
     cursor: pointer;
+    @media (max-width: 678px) {
+      font-size: 20px;
+    }
   }
 
   .navigation {
@@ -24,12 +27,18 @@
         font-weight: 400;
         padding-bottom: 10px;
         cursor: pointer;
+        @media (max-width: 678px) {
+          font-size: 14px;
+        }
       }
     }
   }
   .options {
     a {
       font-weight: 400;
+      @media (max-width: 678px) {
+        font-size: 14px;
+      }
     }
     .language {
       display: flex;
@@ -39,6 +48,9 @@
         cursor: pointer;
         font-size: 15px;
         font-weight: 500;
+        @media (max-width: 678px) {
+          font-size: 12px;
+        }
       }
       .active {
         font-weight: 700;
@@ -51,6 +63,16 @@
       display: flex;
       align-items: center;
       gap: 18px;
+      @media (max-width: 678px) {
+        flex-direction: column;
+        gap: 10px;
+      }
+      img {
+        @media (max-width: 678px) {
+          width: 20px;
+          height: 20px;
+        }
+      }
     }
   }
 }

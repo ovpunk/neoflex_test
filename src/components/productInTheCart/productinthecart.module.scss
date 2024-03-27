@@ -1,12 +1,13 @@
 .product {
   box-sizing: border-box;
-  width: 633px;
+  width: 100%;
   padding: 18px 28px 20px 18px;
   box-shadow: 0px 0px 20px 0px #0000001a;
   background-color: #fff;
   border-radius: 30px;
   margin-bottom: 20px;
   .top {
+    position: relative;
     display: flex;
     align-items: center;
     gap: 24px;
@@ -14,10 +15,21 @@
       width: 146px;
       height: 146px;
       margin-bottom: 20px;
+      img {
+        height: 100%;
+        width: 100%;
+      }
     }
-    img {
-      height: 100%;
-      width: 100%;
+    .delete {
+      position: absolute;
+      top: 0;
+      right: 0;
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+      width: 24px;
+      margin: 0;
+      padding: 0;
     }
 
     .info {
@@ -40,7 +52,12 @@
       display: flex;
       align-items: center;
       gap: 25px;
-      padding-left: 15px;
+      padding-left: 8px;
+      .count_value {
+        width: 20px;
+        display: flex;
+        justify-content: center;
+      }
       button {
         cursor: pointer;
         padding: 0;

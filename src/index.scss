@@ -1,0 +1,49 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+}
+
+html,
+body {
+  height: 100%;
+  overflow-y: scroll;
+  scrollbar-width: thin;
+}
+
+#root {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  font-size: 17px;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: #eaeaea;
+}
+
+.container {
+  height: 100%;
+  max-width: 1110px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+main {
+  flex-grow: 1;
+  padding: 0 0 20px;
+}
+
+ul {
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.bodyModalOpen {
+  height: 100%;
+  width: 100%;
+}

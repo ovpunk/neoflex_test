@@ -1,16 +1,11 @@
-import { FC, useEffect } from "react";
+import { FC } from "react";
 import styles from "./cart.module.scss";
 import { ProductInTheCart } from "../../components/productInTheCart/productInTheCart";
-
-import { IHeadphonesWithCount } from "../../components/layout/layout";
+import { useAppSelector } from "../../hooks/hooks";
+import { IHeadphones } from "../../products";
 
 export const Cart: FC = () => {
-  const cartItemsString = sessionStorage.getItem("cartItems");
-  const cartItems = cartItemsString && JSON.parse(cartItemsString);
-
-  useEffect(() => {
-    console.log(cartItems);
-  }, [cartItems]);
+  const { products, totalPrice } = useAppSelector((state) => state.cart);
 
   return (
     <div className={styles.wrapper}>
@@ -18,17 +13,15 @@ export const Cart: FC = () => {
       <div className={styles.cart}>
         <div className={styles.left}>
           <div className={styles.products}>
-            {cartItems.map((item: IHeadphonesWithCount, i: number) => (
-              <ProductInTheCart key={i} props={item} />
+            {products.map((product: IHeadphones) => (
+              <ProductInTheCart key={product.id} product={product} />
             ))}
-            {/*<ProductInTheCart />
-            <ProductInTheCart />*/}
           </div>
         </div>
         <div className={styles.right}>
           <div className={styles.info}>
             <p>итого</p>
-            <p>₽ 2 927</p>
+            <p>₽ {totalPrice}</p>
           </div>
           <button className={styles.button}>Перейти к оформлению</button>
         </div>
